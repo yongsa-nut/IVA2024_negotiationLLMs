@@ -1,0 +1,41 @@
+Model,Temperature,Turn,Prompt_mode,seller_payoff,buyer_payoff,accepted_threshold,expressive_level,display_rule,face_only,Turn = 1,Turn = 2,Turn = 3,Turn = 4,Turn = 5,ranking_response,Turn = 6,Final_response,i,Turn = 7,Turn = 8,Turn = 9,Turn = 10,Turn = 11
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,7-7-7,6-6-6,7-6-6,7-7-6,6-7-6,service duration < price < warranty period,6-6-7,reject,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,service duration < warranty < price,7-7-6,220,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,8-8-8,7-7-7,6-6-6,6-7-7,5-6-6,price < warranty < service duration,5-7-7,340,0,4-6-6,4-7-7,3-6-6,3-7-7,4-7-7
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,8-8-8,7-7-7,6-6-6,6-7-7,5-6-6,warranty < service < price,5-7-7,reject,1,4-6-6,4-7-7,3-6-6,3-7-7,4-6-7
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,service duration < warranty <= price,7-7-6,220,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,7-7-7,6-6-6,7-5-5,6-6-5,6-5-6,warranty < service duration < price,5-6-6,reject,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,price < service duration <= warranty,6-7-6,reject,0,6-7-7,5-7-7,4-7-7,3-7-7,4-6-6
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,price < service duration <= warranty,6-7-6,reject,1,6-7-7,5-7-7,4-7-7,3-7-7,4-6-7
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,8-8-8,7-7-7,6-6-6,5-5-5,4-4-4,warranty < service < price,3-3-3,reject,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,service duration < warranty < price,1-1-1,reject,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,8-8-8,7-7-7,6-6-6,5-5-5,4-4-4,service duration < warranty period < price,5-5-5,reject,0,4-5-5,3-5-5,2-5-5,2-4-4,2-5-5
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,7-7-7,6-6-6,5-5-5,4-4-4,5-5-5,price < service duration < warranty,4-5-5,reject,1,3-5-5,3-4-5,3-5-5,3-4-5,3-5-4
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,service duration < price = warranty period,7-7-6,220,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,price < service duration < warranty,7-7-6,220,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,7-6-6,7-7-6,price < service duration < warranty,7-6-5,220,0,7-7-5,7-7-6,7-6-6,7-7-6,7-7-6
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,price < service duration < warranty,6-7-6,240,1,7-6-7,7-7-7,6-7-7,6-6-7,6-7-7
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,7-7-7,6-6-6,5-5-5,4-4-4,3-3-3,price < warranty < service,2-2-2,reject,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,price < warranty < service,7-6-5,reject,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,service duration < warranty period < price,6-7-6,reject,0,6-6-7,6-6-6,7-6-6,7-7-6,6-7-7
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,7-7-7,6-6-6,5-5-5,4-4-4,3-4-4,price < service < warranty,3-3-3,reject,1,2-3-3,2-2-3,2-2-2,1-2-2,1-1-2
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,service duration < warranty < price,7-7-6,220,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,8-8-8,7-7-7,6-6-6,6-7-7,5-6-6,price < warranty <= service,5-7-7,290,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,6-6-6,7-7-7,7-6-6,7-7-6,price < service duration <= warranty,7-6-5,220,0,7-7-5,7-7-6,7-6-6,7-7-6,7-7-6
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,7-7-7,6-6-6,7-6-6,7-7-6,6-7-6,warranty < service < price,6-7-7,340,1,5-7-7,4-7-7,3-7-7,4-6-7,4-7-7
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,7-6-6,7-7-6,service duration < warranty < price,7-7-6,220,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,7-7-7,6-6-6,7-5-5,6-7-7,5-7-7,price < warranty = service,4-7-7,340,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,7-6-6,7-7-6,service duration < price < warranty period,7-6-5,220,0,7-7-5,7-7-6,7-6-6,7-7-6,7-7-6
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,price < service duration < warranty,6-7-6,reject,1,6-7-7,5-7-7,4-7-7,3-7-7,4-6-7
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,7-7-7,6-6-6,5-5-5,4-4-4,5-5-5,service duration < warranty period < price,4-5-5,reject,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,8-8-8,7-7-7,6-6-6,5-5-5,4-4-4,4-4-4,3-3-3,reject,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,8-8-8,7-7-7,6-6-6,5-5-5,4-4-4,warranty < service duration < price,4-5-5,reject,0,3-5-5,2-5-5,1-5-5,1-6-6,1-5-6
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,6-6-6,5-5-5,4-4-4,5-4-4,5-5-4,warranty < service < price,4-5-4,reject,1,5-4-5,5-5-5,4-5-5,4-4-5,4-5-4
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,7-7-7,6-6-6,7-6-6,7-7-6,6-7-6,service duration < price < warranty period,7-7-6,220,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,7-7-7,6-6-6,7-6-6,7-7-6,6-7-6,service < warranty <= price,7-7-6,220,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,7-7-7,6-6-6,7-6-6,7-7-6,6-7-6,price < warranty < service,6-7-7,340,0,5-7-7,4-7-7,3-7-7,4-6-7,4-7-7
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,price < warranty < service duration,6-7-6,240,1,7-6-7,7-7-7,6-7-7,6-6-7,6-7-7
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,6-6-6,5-5-5,4-4-4,3-3-3,2-2-2,service duration < warranty < price,1-2-2,reject,0,,,,,
+claude-3-opus-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,7-7-7,6-6-6,5-5-5,4-4-4,3-3-3,price < warranty < service,4-3-3,reject,1,,,,,
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,8-8-8,7-7-7,6-6-6,7-6-6,7-7-6,price < warranty < service,6-7-6,reject,0,6-6-7,5-6-7,5-5-7,5-6-6,6-6-6
+claude-3-opus-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,7-7-7,6-6-6,5-7-6,4-6-6,4-7-5,service duration < warranty < price,4-6-5,reject,1,3-6-5,3-5-5,3-4-5,2-4-5,2-3-4

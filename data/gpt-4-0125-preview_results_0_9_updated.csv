@@ -1,0 +1,201 @@
+Model,Temperature,Turn,Prompt_mode,seller_payoff,buyer_payoff,accepted_threshold,expressive_level,display_rule,face_only,Turn = 1,Turn = 2,Turn = 3,Turn = 4,Turn = 5,ranking_response,Turn = 6,Final_response,i,Turn = 7,Turn = 8,Turn = 9,Turn = 10,Turn = 11
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-3-2,price < warranty < service,1-1-1,reject,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,2-3-2,reject,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,7-6-7,7-7-6,price < warranty < service,7-7-7,190,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,2-2-2,reject,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,0,7-7-6,7-6-6,7-7-7,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-6,190,1,7-7-6,7-6-6,7-7-7,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,2,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,7-7-7,6-6-6,7-6-7,7-7-6,6-7-5,price < warranty < service,7-7-5,240,3,7-6-6,6-7-6,7-7-7,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-8,240,4,6-7-7,6-6-7,6-7-7,6-6-6,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,5,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,7-7-7,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,6,7-7-7,6-7-7,6-6-7,6-7-6,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,7,7-7-6,7-6-6,7-7-7,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,8,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,warranty < service < price,4-4-4,190,9,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,2-3-2,reject,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-4-4,7-3-3,8-2-2,9-1-1,price < warranty < service duration,5-2-2,reject,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,7-6-5,6-5-4,5-4-3,4-3-2,3-2-1,warranty < service < price,2-1-1,reject,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,5-5-5,2-2-2,reject,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-6-3,2-7-2,1-8-1,price < service < warranty,1-9-1,reject,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,7-7-7,6-6-6,7-6-7,7-7-6,6-7-6,price < warranty < service,7-7-7,190,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,2-2-2,reject,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-4-4,7-3-3,8-2-2,9-1-1,price < warranty < service duration,7-2-2,reject,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,7-6-5,6-5-4,5-4-3,4-3-2,3-2-1,price < warranty < service,2-1-2,reject,0,3-1-3,2-2-3,3-2-4,4-3-5,5-4-6
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,1,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,190,2,6-7-7,7-7-6,7-6-6,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,7-7-7,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,reject,3,6-7-6,6-7-7,6-6-7,6-7-7,6-7-6
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,4,7-7-6,7-6-6,7-7-7,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service duration,6-7-8,240,5,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-8,240,6,6-6-8,5-6-8,6-6-7,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,2-3-4,reject,7,3-2-1,4-3-2,3-4-5,2-3-4,3-2-1
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,7-7-7,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,290,8,5-7-7,5-6-7,5-7-7,5-7-6,5-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,9,7-7-6,7-6-7,7-7-7,7-6-6,7-7-7
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,4-4-4,reject,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,4-4-4,reject,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,7-7-7,6-6-6,5-5-5,4-4-4,3-3-3,Cannot determine the buyer's preference order based on the provided information.,2-2-2,reject,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-5-4,3-4-5,3-3-5,warranty < service < price,3-3-4,reject,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-5-5,3-4-4,3-3-4,warranty < service < price,3-3-3,reject,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-5-4,3-4-5,3-3-5,warranty < service < price,3-3-4,reject,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,1-3-2,price < warranty < service duration,1-2-1,reject,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-4-3,2-3-4,warranty < service < price,2-2-3,reject,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,4-4-4,reject,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-4-3,2-3-3,price < warranty < service duration,2-2-3,reject,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,warranty < service < price,4-4-4,reject,0,3-3-3,4-4-4,5-5-5,4-4-4,3-3-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,6-6-6,5-5-5,4-4-4,price < warranty < service,6-6-6,reject,1,5-5-5,4-4-4,6-6-6,5-5-5,5-5-5
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,6-6-6,5-5-5,4-4-4,price < warranty < service,6-6-6,reject,2,5-5-5,4-4-4,6-6-6,5-5-5,4-4-4
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,4-4-4,reject,3,3-3-3,4-4-4,5-5-5,4-4-4,3-3-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-5-4,3-4-5,3-4-4,warranty < service < price,3-3-4,reject,4,2-3-4,2-3-3,2-2-3,2-2-2,1-2-2
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-5-4,3-4-5,3-4-4,warranty < service < price,3-3-4,reject,5,3-3-3,2-3-3,2-2-3,2-2-2,2-1-2
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,4-4-4,reject,6,3-3-3,4-4-4,5-5-5,4-4-4,3-3-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,6-6-6,reject,7,5-5-5,4-4-4,5-5-5,6-6-6,5-5-5
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,4-4-4,reject,8,3-3-3,4-4-4,5-5-5,4-4-4,3-3-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-5-4,3-4-5,3-4-4,warranty < service < price,3-3-4,reject,9,2-3-4,2-3-3,2-2-3,2-2-2,1-2-2
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service duration,6-7-7,240,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,7-7-7,6-6-6,7-7-8,6-7-7,6-6-7,price < warranty < service,6-7-7,240,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,5-7-7,price < warranty < service,5-7-7,290,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service duration,6-7-7,240,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,0,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,3-3-4,price < warranty < service duration,4-4-5,190,1,5-5-6,6-6-7,7-7-8,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,2,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,7-7-6,190,3,6-7-6,7-6-7,7-7-7,7-7-6,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,4,6-7-7,6-6-7,6-7-6,7-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7,price < warranty < service duration,7-7-7,190,5,7-7-7,7-7-7,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7,price < warranty < service,7-7-7,190,6,7-7-7,7-7-7,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,7,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7,price < warranty < service duration,7-7-7,190,8,7-7-7,7-7-7,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7,price < warranty < service,7-7-7,190,9,7-7-7,7-7-7,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,price < warranty < service,7-7-7,reject,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,5-5-5,service < warranty < price,7-7-7,reject,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,price < warranty < service,7-7-7,reject,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,price < warranty < service,7-7-7,reject,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-7-8,6-6-7,warranty < service < price,6-6-8,reject,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,7-7-7,6-6-6,5-5-5,4-4-4,3-3-3,price < warranty < service duration,2-2-2,reject,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,price < warranty < service,7-7-7,reject,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,price < warranty < service,7-7-7,reject,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-7-8,6-6-7,warranty < service < price,6-6-8,reject,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,price < warranty < service,7-7-7,reject,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,warranty < service < price,8-7-7,reject,0,8-8-7,8-8-8,9-8-8,9-9-8,9-9-9
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-7-8,6-6-7,price < warranty < service duration,5-6-7,reject,1,5-5-6,6-5-7,7-6-8,6-7-8,6-6-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,warranty < service < price,8-8-8,reject,2,7-7-7,7-6-7,7-5-7,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,warranty < service < price,8-7-7,reject,3,8-8-7,8-8-8,9-8-8,9-9-8,9-9-9
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,warranty < service < price,8-7-7,reject,4,8-8-7,8-8-8,9-8-8,9-9-8,9-9-9
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,7-7-7,6-6-6,5-5-5,4-6-6,4-5-5,warranty < service < price,3-5-5,reject,5,3-4-5,3-4-4,3-3-4,2-3-4,2-3-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-6-6,7-7-7,warranty < service < price,8-7-7,reject,6,8-8-7,8-8-8,9-8-8,9-9-8,9-9-9
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,7-7-7,6-6-6,5-5-5,4-6-6,4-5-5,warranty < service < price,3-5-5,reject,7,3-4-5,3-4-4,3-3-4,3-3-3,2-3-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,7-6-7,7-5-7,price < warranty < service,7-6-7,reject,8,7-6-6,7-7-6,7-7-5,7-7-4,7-7-6
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,6-6-6,7-7-7,6-7-8,5-6-7,warranty < service < price,6-6-7,reject,9,6-7-6,7-6-7,7-7-6,7-6-6,6-7-7
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,2-2-2,reject,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,2-3-2,reject,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,2-2-2,reject,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,warranty < service < price,2-3-2,reject,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,2-3-2,reject,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,1-1-1,reject,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,2-3-2,reject,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,warranty < service < price,4-4-4,190,0,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,1,6-7-7,6-6-7,6-7-6,7-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,7-7-7,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,reject,2,6-7-6,6-7-7,6-6-7,6-7-7,6-7-6
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,price < warranty < service,4-4-4,190,3,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,4,6-7-7,6-6-7,6-7-6,7-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-8,240,5,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,price < warranty < service,4-4-4,190,6,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,6-6-6,7-7-7,7-6-7,7-7-6,warranty < service < price,7-7-5,220,7,7-7-6,7-6-6,7-7-7,7-7-6,7-7-6
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,7-6-7,190,8,7-7-6,7-6-6,7-7-7,7-7-6,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,price < warranty < service,4-4-4,190,9,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service duration,6-7-7,240,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service duration,1-1-1,reject,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,7-6-7,7-7-6,price < warranty < service,7-7-7,190,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,1-1-1,2-3-2,reject,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < service duration < warranty,2-2-2,reject,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,2-3-2,reject,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,7-7-6,190,0,7-6-6,7-7-7,7-6-7,7-7-6,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,1,6-7-7,6-6-7,6-7-7,6-7-6,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,reject,2,6-6-8,5-6-8,6-6-7,6-7-7,6-7-6
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,warranty < service < price,4-4-4,190,3,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,2-3-4,reject,4,3-2-1,2-1-2,1-2-3,2-3-2,3-2-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,7-6-7,7-7-6,price < warranty < service,7-7-5,190,5,7-6-6,7-7-7,7-7-6,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,6,7-7-6,7-6-7,7-7-7,7-6-6,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,price < warranty < service,4-4-4,190,7,5-5-5,6-6-6,7-7-7,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service duration,6-7-8,290,8,6-7-7,5-7-7,5-6-7,5-7-8,5-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,9,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-5-4,3-4-5,3-3-5,warranty < service < price,3-3-4,reject,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-5-4,3-4-5,3-4-4,price < warranty < service,3-3-4,reject,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,warranty < service < price,4-4-4,reject,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-5-4,3-4-5,3-3-5,price < warranty < service duration,3-3-4,reject,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,3-4-4,3-5-5,warranty < service < price,2-4-5,reject,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-5-4,3-4-5,3-3-5,price < warranty < service,3-3-4,reject,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,5-4-3,6-4-3,6-5-3,price < warranty < service,7-5-3,reject,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,price < warranty < service,4-4-4,reject,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-5-4,3-4-5,3-4-4,price < warranty < service,3-3-4,reject,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,3-4-3,3-5-3,warranty < service < price,3-6-3,reject,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,5-4-5,6-4-6,5-3-5,price < warranty < service,6-3-6,reject,0,7-3-7,6-2-6,7-2-7,8-2-8,7-1-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-5-4,3-6-5,3-5-5,warranty < service < price,3-4-5,reject,1,3-4-4,3-5-4,4-5-4,4-6-5,3-5-5
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,6-6-6,5-5-5,4-4-4,warranty < service < price,6-6-6,reject,2,5-5-5,4-4-4,6-6-6,5-5-5,4-4-4
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-5-4,3-6-4,3-5-5,warranty < service < price,3-4-5,reject,3,3-4-4,3-3-4,3-3-3,2-3-3,2-2-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,5-4-5,6-4-6,5-5-5,warranty < service < price,4-6-4,reject,4,3-7-3,4-6-4,5-5-5,4-4-4,5-4-5
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-5-4,3-4-5,3-3-5,warranty < service < price,3-3-4,reject,5,3-2-4,2-2-4,2-2-3,2-1-3,2-1-2
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,5-5-6,4-4-5,5-5-7,price < warranty < service,4-4-6,reject,6,3-3-5,4-4-7,3-3-6,4-4-8,3-3-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,5-5-5,6-5-5,7-5-5,price < warranty < service,6-4-4,reject,7,7-5-5,8-5-5,7-6-6,8-6-6,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,5-5-5,6-5-5,7-5-5,price < warranty < service,6-4-4,reject,8,7-5-5,8-5-5,7-6-6,8-6-6,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,5-5-5,6-5-5,7-5-5,price < warranty < service,6-6-6,reject,9,7-6-6,7-7-7,8-7-7,8-8-8,7-7-7
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service duration,6-7-7,240,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,2-3-2,reject,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-4-4,7-3-3,8-2-2,9-1-1,warranty < service < price,7-2-2,reject,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,2-3-2,reject,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-7,240,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,warranty < service < price,2-3-2,reject,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,2-2-2,reject,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-7,240,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-8,240,0,6-7-7,6-6-7,6-7-6,7-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,1,7-6-7,7-7-6,7-6-6,7-7-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,warranty < service < price,6-7-6,190,2,7-7-6,7-6-6,7-7-7,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,3,7-7-6,7-6-6,7-7-7,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,4,7-7-6,7-6-6,7-7-7,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,2-3-4,210,5,3-4-5,4-5-6,5-6-7,6-7-8,6-7-8
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-4-4,7-3-3,8-2-2,7-3-4,price < warranty < service,6-5-5,340,6,5-6-6,4-7-7,4-7-7,4-7-7,4-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,7,7-7-6,7-6-6,7-7-7,7-6-7,7-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-8,240,8,6-7-7,6-6-7,6-7-8,6-7-7,6-7-7
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,6-6-6,7-7-7,6-7-7,6-6-7,price < warranty < service,6-7-6,190,9,7-7-6,7-6-7,7-7-7,7-7-6,7-7-7
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,1-1-1,reject,0,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service duration,1-1-1,reject,1,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-4-3,2-3-4,price < warranty < service,2-2-3,reject,2,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,1-1-1,reject,3,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,warranty < service < price,2-2-2,reject,4,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,warranty < service < price,2-2-2,reject,5,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,2-2-2,reject,6,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,3-3-3,reject,7,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-4-3,2-3-3,price < warranty < service,2-2-2,reject,8,,,,,
+gpt-4-0125-preview,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,7-7-7,6-6-6,5-5-5,4-4-4,3-3-3,warranty < service < price,2-2-2,reject,9,,,,,
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,6-6-6,7-7-7,7-6-7,7-5-7,warranty < service < price,7-6-6,reject,0,7-7-6,7-7-5,7-6-5,7-7-4,7-7-5
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-4-3,3-3-4,warranty < service < price,2-3-3,reject,1,2-2-3,2-2-2,1-2-2,1-1-2,1-1-1
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,6-6-6,reject,2,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,4-4-5,5-5-6,price < warranty < service,6-6-7,reject,3,7-7-8,8-8-9,9-9-8,9-8-7,8-7-6
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,3-3-3,warranty < service < price,4-4-4,reject,4,5-5-5,6-6-6,5-5-5,4-4-4,3-3-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,4-4-4,5-5-5,price < warranty < service,4-5-6,reject,5,3-4-5,3-3-4,4-4-5,3-4-4,3-3-3
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,6-6-6,7-7-7,7-6-7,7-5-7,warranty < service < price,7-6-6,reject,6,7-7-6,7-6-5,7-7-5,7-6-4,7-7-4
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,4-4-5,5-5-6,price < warranty < service,4-5-6,reject,7,3-4-5,3-4-6,3-5-6,2-4-6,2-5-6
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,6-6-6,7-7-7,7-6-7,7-5-7,warranty < service < price,7-6-6,reject,8,7-7-6,7-6-5,7-7-5,7-6-4,7-7-4
+gpt-4-0125-preview,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,6-6-6,7-7-7,7-6-7,7-5-7,warranty < service < price,7-6-6,reject,9,7-7-6,7-7-5,7-6-5,7-7-4,7-7-5

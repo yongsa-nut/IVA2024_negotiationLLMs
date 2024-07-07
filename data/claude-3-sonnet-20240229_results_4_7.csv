@@ -1,0 +1,81 @@
+Model,Temperature,Turn,Prompt_mode,seller_payoff,buyer_payoff,accepted_threshold,expressive_level,display_rule,face_only,Turn = 1,Turn = 2,Turn = 3,Turn = 4,Turn = 5,ranking_response,Turn = 6,Final_response,i,Turn = 7,Turn = 8,Turn = 9,Turn = 10,Turn = 11
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,1-2-3,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,1-1-2,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,1-2-3,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,5-5-5,1-1-2,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,1-1-1,1-1-3,reject,0,1-1-2,1-1-1,2-1-1,1-2-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service,1-1-2,reject,1,1-1-1,2-1-1,3-2-1,4-3-2,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,price < warranty < service,1-2-1,reject,2,1-1-2,1-1-1,2-1-1,1-2-2,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service duration,1-1-2,reject,3,1-1-1,2-1-1,3-2-1,2-2-1,1-1-1
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,warranty < service < price,1-1-2,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service,1-1-2,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-2,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service,1-1-1,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,price < warranty < service,1-2-1,reject,0,1-1-2,1-2-1,2-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,1-1-1,1-2-1,reject,1,1-1-2,1-2-1,2-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-3-3,2-2-3,price < warranty < service,2-2-2,reject,2,1-3-3,1-2-3,1-2-2,1-1-2,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,1-1-1,1-2-1,reject,3,1-1-2,1-2-1,2-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-2,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-2,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-2,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-3-2,2-2-2,warranty < service < price,1-2-1,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-3-3,2-2-3,price < warranty < service,2-2-2,reject,0,1-2-2,1-1-2,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-3-3,2-2-3,warranty < service < price,2-2-2,reject,1,1-2-2,1-1-2,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-3-3,2-2-3,price < warranty < service,2-2-2,reject,2,1-2-2,1-1-2,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,2-3-2,warranty < price < service,2-3-3,reject,3,3-4-3,3-4-4,4-5-4,4-5-5,5-6-5
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-2,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,1-1-1,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,warranty < service < price,1-1-1,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-1,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-3,reject,0,1-1-2,1-1-1,2-1-1,1-2-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,1-1-1,1-1-3,reject,1,1-1-2,1-1-1,1-2-1,2-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,1-1-1,1-1-3,reject,2,1-1-2,1-1-1,2-1-1,1-2-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-3,reject,3,1-1-2,1-1-1,1-2-1,2-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-1,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-2,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-2,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-1,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,4-4-4,3-3-3,2-3-3,2-2-3,warranty < service < price,2-2-2,reject,0,1-2-2,1-2-1,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,price < warranty < service duration,1-1-2,reject,1,1-1-1,1-1-1,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,service duration < warranty period < price,1-1-2,reject,2,1-1-1,1-1-1,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-angry,True,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,price < warranty < service duration,1-2-1,reject,3,1-1-2,1-1-1,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,1-1-2,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,5-5-5,1-1-2,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,5-5-5,1-1-2,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,price < warranty < service,1-1-2,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service duration,1-3-2,reject,0,2-1-3,3-1-2,2-2-1,1-1-2,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service,1-1-2,reject,1,1-1-1,2-1-1,3-2-1,4-3-2,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service,1-1-4,reject,2,1-1-2,1-1-1,2-1-1,1-2-1,1-1-2
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,1.0,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service,1-1-4,reject,3,1-1-2,1-1-1,2-1-1,1-2-1,1-1-1
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-2,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < service < warranty,1-1-2,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-1,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-1,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,price < warranty < service duration,1-2-1,reject,0,1-1-2,1-1-1,1-2-1,2-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,price < warranty < service duration,1-2-1,reject,1,1-1-2,1-1-1,1-2-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,price < warranty < service duration,1-2-1,reject,2,1-1-2,1-2-1,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,False,5-5-5,4-4-4,3-3-3,2-3-3,2-2-3,warranty < service < price,2-2-2,reject,3,1-2-2,1-2-1,1-1-2,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-1,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-1,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-1-1,warranty < service < price,1-1-1,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service,1-1-2,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,2-3-3,warranty < service < price,2-2-2,reject,0,1-3-3,1-2-2,1-1-3,1-1-2,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,2-3-3,warranty < service < price,2-2-2,reject,1,1-3-3,1-2-2,1-1-3,1-1-2,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-4-4,2-3-5,warranty < service < price,2-2-6,reject,2,1-3-6,1-2-7,1-2-5,1-1-6,1-1-4
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.25,happy-sad,True,5-5-5,4-4-4,3-3-3,2-4-4,2-3-5,warranty < service < price,2-2-6,reject,3,1-3-6,1-2-7,1-2-6,1-1-7,1-1-6
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service,1-1-2,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-3,price < warranty < service,1-1-2,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,4-4-4,3-3-3,2-2-2,1-2-2,1-1-2,warranty < service < price,1-1-1,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-1,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,price < warranty < service,1-2-1,reject,0,1-1-2,1-1-1,1-2-2,2-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,price < warranty < service,1-2-1,reject,1,1-1-2,1-2-1,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,2-1-2,warranty < service < price,1-2-1,reject,2,1-1-2,1-2-1,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,False,5-5-5,4-4-4,3-3-3,2-2-2,1-3-3,warranty < service < price,1-2-2,reject,3,1-1-3,1-1-2,1-1-1,1-1-1,1-1-1
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-1,reject,0,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-2,reject,1,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,price < warranty < service,1-1-2,reject,2,,,,,
+claude-3-sonnet-20240229,0.5,5,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-2-2,1-2-2,warranty < service < price,1-1-1,reject,3,,,,,
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-4-4,2-3-3,price < service < warranty,2-2-2,reject,0,1-3-3,1-2-2,1-1-3,1-1-2,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-4-4,2-3-3,warranty < service < price,2-2-2,reject,1,1-3-3,1-2-3,1-2-2,1-1-2,1-1-1
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-4-4,2-3-5,warranty < service < price,2-2-6,reject,2,1-3-6,1-2-7,1-1-8,1-1-7,1-1-6
+claude-3-sonnet-20240229,0.5,10,implicit,"[50, 15, 30]","[10, 40, 25]",0.7,0.05,happy-sad,True,5-5-5,4-4-4,3-3-3,2-4-4,2-3-3,warranty < service < price,2-2-2,reject,3,1-3-3,1-2-3,1-2-2,1-1-2,1-1-1
