@@ -1,0 +1,1369 @@
+---
+title: "Exploring Theory of Mind in Large Language Models through Multimodal Negotiation - IVA2024"
+author: "Anon"
+date: "2024-04-08"
+output: html_document
+---
+
+# Setup markdown and load relevant libraries
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+# Load data and data manipulation
+
+## Load data
+We load all individual data files (.cvs) and bind all individual files into one tibble. We have multiple files as we ran the iterations over multiple sessions. 
+
+```{r load data}
+
+# note all data must be stored in a folder in current working directory called "Data"
+gpt_3.5 <- read_csv("./Data/gpt-3.5-turbo_results_updated.csv")
+gpt_4_1 <- read_csv("./Data/gpt-4-0125_results_0_9_updated.csv")
+gpt_4_2 <- read_csv("./Data/gpt-4-0125_results_10_19_updated.csv")
+claude_3_1 <- read_csv("./Data/claude-3-sonnet-20240229_results_0_3.csv")
+claude_3_2 <- read_csv("./Data/claude-3-sonnet-20240229_results_4_7.csv")
+claude_3_3 <- read_csv("./Data/claude-3-sonnet-20240229_results_8_11.csv")
+claude_3_4 <- read_csv("./Data/claude-3-sonnet-20240229_results_12_15.csv")
+claude_3_5 <- read_csv("./Data/claude-3-sonnet-20240229_results_16_19.csv")
+claude_opus_1 <- read_csv("./Data/claude-3-opus-20240229_results_0_1.csv")
+claude_opus_2 <- read_csv("./Data/claude-3-opus-20240229_results_2_3.csv")
+claude_opus_3 <- read_csv("./Data/claude-3-opus-20240229_results_4_5.csv")
+claude_opus_4 <- read_csv("./Data/claude-3-opus-20240229_results_6_7.csv")
+claude_opus_5 <- read_csv("./Data/claude-3-opus-20240229_results_8_9.csv")
+claude_opus_6 <- read_csv("./Data/claude-3-opus-20240229_results_10_11.csv")
+claude_opus_7 <- read_csv("./Data/claude-3-opus-20240229_results_12_13.csv")
+claude_opus_8 <- read_csv("./Data/claude-3-opus-20240229_results_14_15.csv")
+claude_opus_9 <- read_csv("./Data/claude-3-opus-20240229_results_16_17.csv")
+claude_opus_10 <- read_csv("./Data/claude-3-opus-20240229_results_18_19.csv")
+
+# bind data
+data_full <- bind_rows(gpt_3.5, gpt_4_1, gpt_4_2, claude_3_1, claude_3_2, claude_3_3,
+                       claude_3_4, claude_3_5,
+                       claude_opus_1, claude_opus_2, claude_opus_3, claude_opus_4,
+                       claude_opus_5, claude_opus_6, claude_opus_7, claude_opus_8,
+                       claude_opus_9, claude_opus_10) %>%
+  mutate_if(is.character, as.factor) %>% # bind tibbles and make all character columns factors
+  mutate(Turn = as.factor(Turn), # make turn and expressive level (expressiveness in paper) into factors
+         expressive_level = as.factor(expressive_level)) %>%
+  ungroup()
+  
+# clean up
+rm(list = c("gpt_3.5", "gpt_4_1", "gpt_4_2", "claude_3_1", "claude_3_2", "claude_3_3",
+            "claude_3_4", "claude_3_5",
+            "claude_opus_1", "claude_opus_2", "claude_opus_3", "claude_opus_4",
+                       "claude_opus_5", "claude_opus_6", "claude_opus_7", "claude_opus_8",
+                       "claude_opus_9", "claude_opus_10"))
+
+```
+
+## Data manipulations
+
+We need to create relevant response variables as well as manipulate some of the data
+
+Functions for data manipulation
+```{r helper functions}
+
+calc_max_util <- function(payoff_factor){
+  # function takes the payoff vector and makes calculates max utility
+  
+  payoff_chr <- gsub("\\[|\\]", "", as.character(payoff_factor)) # remove special character "[" "]"
+  payoff_array <- lapply(strsplit(payoff_chr, ","), as.numeric)[[1]] # make numeric and take from list
+  
+  max_util <- payoff_array[1] * 8 + payoff_array[2] * 8 + payoff_array[3] * 8 # if they get the highest level 9, they'll get 8*payoff as level 1 is 0, then 50*level above level 1 
+  
+  return(max_util)
+}
+
+calc_util <- function(payoff_factor, offer, agent = "agent") {
+  # function to calculate utility for agent given an offer
+  
+  # change payoff into array
+  payoff_chr <- gsub("\\[|\\]", "", as.character(payoff_factor)) # remove special character "[" "]"
+  payoff_array <- lapply(strsplit(payoff_chr, ","), as.numeric)[[1]] # make numeric and take from list
+  
+  # change offer into array
+  offer_array <- lapply(strsplit(as.character(offer), "-"), as.numeric)[[1]] # turn to string, remove "-" and make numeric list and take array from list
+  
+  if (agent == "agent"){
+    # calc util as dot product
+    util <- payoff_array[1] * (offer_array[1]-1) + payoff_array[2] * (offer_array[2]-1) + payoff_array[3] * (offer_array[3]-1) # we substract 1 from each offer to account for 0 being at level 1 (i.e. (level - 1)*payoff)
+  } else {
+    util <- payoff_array[1] * (9-offer_array[1]) + payoff_array[2] * (9-offer_array[2]) + payoff_array[3] * (9-offer_array[3])
+  }
+  
+  return(util)
+}
+
+calc_threshold <- function(max_util, accepted_threshold) {
+  # calculate point threshold
+  
+  return(max_util*accepted_threshold)
+}
+
+succesful_negotiation <- function(payoff_factor, final_offer, util_threshold){
+  # return binary response for whether the agent accepted the final offer
+  final_offer_util <- calc_util(payoff_factor = payoff_factor, offer = final_offer, agent = "agent") # calc util of final offer
+  
+  if (final_offer_util >= util_threshold){ # if final offer util is larger than threshold return 1 else 0
+    return(1)
+  } else {
+    return(0)
+  }
+}
+
+```
+
+Do that data manipulations.  Note that we are taking out explicit prompting.  Originally, we were looking to do explicit prompting as well.  However, this proved to be too expensive and time consuming, while not adding significantly to the research question. We only ran it for chatGPT. Therefore, it is excluded for all analyses.
+```{r creating colums}
+
+data_full <- data_full %>%
+  mutate(
+    final_offer = as.factor( # we turn back into factor as we have to go into character
+      ifelse(Turn == 5, # if 5 turns use turn 6 else turn 11
+             as.character(`Turn = 6`), # turn factor into character to get actual text and not factor level
+             as.character(`Turn = 11`)))
+  ) %>%
+  filter(Prompt_mode == "implicit") %>% # take out explicit prompting
+  rowwise() %>% # for each row
+  mutate( # apply help functions
+    max_util = calc_max_util(buyer_payoff),
+    util_threshold = calc_threshold(max_util, accepted_threshold),
+    final_offer_util_agent = calc_util(buyer_payoff, final_offer, agent = "agent"),
+    final_offer_util_llm = calc_util(seller_payoff, final_offer, agent = "llm"),
+    success = succesful_negotiation(buyer_payoff, final_offer, util_threshold)
+  ) %>%
+  ungroup()
+
+```
+
+# Model differences. 
+
+## table
+```{r by model differences table}
+
+model_diff_table <- table( # table by model and successes
+  data_full$Model,
+  factor( # make factor with names
+    data_full$success,
+    levels = c("0", "1"),
+    labels = c("Offer declined", "Offer accepted")
+    )
+  )
+
+model_diff_table %>% print()
+```
+
+## Make plot
+```{r model differences plot}
+
+main_plot <- data_full %>%
+  mutate(Model = relevel(Model, ref = "claude-3-sonnet-20240229")) %>% # set base level (not necessary)
+  ggplot(
+  data = .,
+  aes(
+    x = Model, 
+    fill = as.factor(success)
+  )) + 
+  geom_bar() +
+  labs(title = "Model performance",
+       fill = "Outcome",
+       y = "Count") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) + # colorblind friendly
+  scale_x_discrete(guide = guide_axis(angle = 45), 
+                   labels = c("Sonnet", "Opus", "ChatGPT", "GPT-4 Turbo")) + 
+  theme_minimal()
+
+main_plot %>% print()
+```
+
+## Fit model
+We fit the main model and then we refit it with a different base level to get all contrast.
+```{r model differences GLM}
+model_diff <- glm(
+  formula = success ~ Model,
+    data = data_full)
+
+model_diff %>% summary() # Opus performing significantly different from all models
+
+# Checking that adding term significantly improves fit
+drop1(model_diff, .~., test = "Chisq") %>% print() # adding term is significantly better than null model
+
+
+# relevel to get other contrasts
+model_diff_recode <- data_full %>% 
+  mutate(Model = relevel(Model, ref = "gpt-3.5-turbo")) %>%
+  glm(
+    formula = success ~ Model, 
+    data = .
+  ) 
+
+model_diff_recode %>% summary() # chatGPT performs significantly different than all other models
+
+model_diff_recode <- data_full %>% 
+  mutate(Model = relevel(Model, ref = "gpt-4-0125-preview")) %>%
+  glm(
+    formula = success ~ Model, 
+    data = .
+  )
+
+model_diff_recode %>% summary() # gpt-4 performs significantly different than all models
+
+# by comparisons sonnet performs significantly different than all models
+
+```
+
+# GPT-4 Turbo analysis
+
+We filter to only get GPT-4 data.
+```{r gpt 4 filter}
+gpt4 <- data_full %>%
+  filter(Model == "gpt-4-0125-preview")
+
+```
+
+## Expression only versus expression and verbal response
+```{r GPT4 expression only}
+gpt4_noExp_mod <- gpt4 %>%
+  glm(formula = success ~ face_only,
+      family = "binomial",
+      data = .)
+
+gpt4_noExp_mod %>% summary() # significant worse with no expression
+
+drop1(gpt4_noExp_mod, .~., test = "Chisq") %>% print() # better than null model
+```
+
+## Turn
+```{r GPT4 Turn}
+
+# Simple effects
+
+## Turn
+gpt4_turn_mod <- gpt4 %>%
+  filter(face_only == FALSE) %>%
+  glm(formula = success ~ Turn,
+      family = "binomial",
+      data = .)
+
+gpt4_turn_mod %>% summary() # significant 
+
+drop1(gpt4_turn_mod, .~., test = "Chisq") %>% print() # better than null model
+```
+
+
+
+## Interaction between Expression Only and Turn
+
+We don't report on this in the paper.  There are significant main effect; however the interaction effect is not significant at alpha = 0.001.  It is also the case, that adding the interaction term does not significantly add explanatory power with alpha = 0.001.  Moreover, as we are not interested in looking at the turn effects with no expression (which in any case is insignificant). 
+
+```{r GPT4 Turn x face_only}
+
+# base model
+gpt4_no_exp_mod <- gpt4 %>%
+  glm(formula = success ~ face_only * Turn,
+      family = "binomial",
+      data = .)
+
+gpt4_no_exp_mod %>% summary()
+
+## checking if they are good estimator for model
+gpt4_no_exp_mod %>% drop1(object = ., .~., test = "Chisq") 
+  
+# relevel to get all effects.
+
+# 10 ref for turn
+gpt4_no_exp_refT_mod <- gpt4 %>%
+  mutate(Turn = relevel(Turn, ref = "10")) %>% # set 10 as ref for turn
+  glm(formula = success ~ face_only * Turn,
+      family = "binomial",
+      data = .)
+
+gpt4_no_exp_refT_mod %>% summary()
+
+# True ref for face only - Notice however there is no significant effect of turn on no face.
+gpt4_no_exp_refFO_mod <- gpt4 %>%
+  mutate(
+    face_only = factor(face_only, levels = c(TRUE, FALSE))) %>%
+  glm(formula = success ~ face_only * Turn,
+      family = "binomial",
+      data = .)
+
+gpt4_no_exp_refFO_mod %>% summary()
+
+# True ref for face only and 10 for turn
+gpt4_no_exp_refTFO_mod <- gpt4 %>%
+  mutate(Turn = relevel(Turn, ref = "10"),
+         face_only = factor(face_only, levels = c(TRUE, FALSE))) %>%
+  glm(formula = success ~ face_only * Turn,
+      family = "binomial",
+      data = .)
+
+gpt4_no_exp_refTFO_mod %>% summary()
+
+## plotting
+gpt4_no_exp_plot <- gpt4 %>% 
+  ggplot(
+  data =.,
+  aes(
+    x = face_only, 
+    fill = as.factor(success)
+  )) + 
+  # facet_wrap(~Turn) + 
+  geom_bar(position = "fill") +
+  labs(
+    title = "GPT-4 performance based on access to verbal response by turn",
+    fill = "Negotiation Outcome",
+    x = "",
+    y = "Count") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  scale_x_discrete(labels = c("Expression +\n verbal response", "Expression only")) +
+  theme_minimal()
+
+gpt4_no_exp_plot %>% print()
+
+# table
+gpt4_noExpxTurn_table <- gpt4 %>%
+  group_by(Turn, face_only) %>%
+  summarise(freq = sum(success)) %>%
+  ungroup() %>% 
+  xtabs(data = ., formula = freq ~face_only + Turn)
+
+gpt4_noExpxTurn_table %>% print()
+
+
+```
+
+```{r clean up}
+# cleaning up
+
+rm(list = c("gpt4_no_exp_mod", "gpt4_no_exp_refT_mod", "gpt4_no_exp_refFO_mod", "gpt4_no_exp_refTFO_mod", "gpt4_no_exp_plot"))
+
+```
+
+
+## Expressiveness. 
+```{r GPT4 Expressiveness}
+gpt4_exp <- gpt4 %>%
+  filter(face_only == FALSE) # filter to only data with facial expression description
+
+# table
+gpt4_expressivity_table <- table(
+    gpt4_exp$expressive_level,
+    factor(
+      gpt4_exp$success,
+      levels = c("0", "1"),
+      labels = c("Offer declined", "Offer accepted")
+      )
+    )
+
+
+gpt4_expressivity_table %>% print()
+
+# fit model
+gpt4_express_mod <- gpt4_exp %>% # both 0.25 and 1 are worse than 0.05
+  glm(formula = success ~ expressive_level,
+      family = "binomial",
+      data = .)
+
+gpt4_express_mod %>% summary()
+
+# relevel (clearly not needed as 0.25 and 1 are identical)
+gpt4_express25_mod <- gpt4_exp %>%
+  mutate(expressive_level = relevel(expressive_level, ref = "0.25")) %>%
+  glm(formula = success ~ expressive_level,
+      family = "binomial",
+      data = .)
+
+gpt4_express25_mod %>% summary()
+
+# check significance of added element to mod - highly significant
+drop1(gpt4_express_mod, .~., test = "Chisq")
+
+
+## plot
+gpt4_expressive_plot <- gpt4_exp %>% 
+  ggplot(
+  data =.,
+  aes(
+    x = expressive_level, 
+    fill = as.factor(success)
+  )) + 
+  geom_bar() +
+  labs(
+    title = "GPT-4 performance based expressiveness",
+    fill = "Negotiation Outcome",
+    x = "",
+    y = "Count") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  theme_minimal()
+
+gpt4_expressive_plot %>% print()
+
+```
+
+## Expressive turn interaction
+
+```{r GPT4 Expressive x Turn}
+
+# Table
+gpt4_expTurn_table <- gpt4_exp %>% 
+  group_by(expressive_level, Turn) %>%
+  summarise(freq = sum(success)) %>%
+  ungroup() %>% 
+  xtabs(data = ., formula = freq ~ (Turn + expressive_level))
+
+gpt4_expTurn_table %>% print()
+
+
+# Plot
+gpt4_expTurn_plot <- ggplot(
+  data = gpt4_exp,
+  aes(
+    x = expressive_level, 
+    fill = as.factor(success)
+  )) + 
+  facet_wrap(~Turn) + 
+  geom_bar() +
+  labs(
+    title = "GPT-4 performance based on expressivity and turn",
+    fill = "Negotiation Outcome",
+    x = "Expressivity Level") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  theme_minimal()
+
+gpt4_expTurn_plot %>% print() # NOTE we have one condition with 100 successes this does not allow robust model
+
+# overall effect
+gpt4_exp_mod <- gpt4_exp %>%
+  glm(
+  formula = success ~ expressive_level * Turn,
+  family = "binomial",
+  data = .
+)
+
+gpt4_exp_mod %>%  summary() # we can easily see that these coefficients and std. errors are not appropriate!
+
+drop1(gpt4_exp_mod, .~., test = "Chisq") # so even if the model was robust, given the analyses at hand it's not significant.
+
+```
+
+
+## Display
+
+```{r GPT4 display}
+gpt4_display_table <- table(
+  gpt4_exp$display_rule,
+  factor(
+    gpt4_exp$success,
+    levels = c("0", "1"),
+    labels = c("Offer declined", "Offer accepted")
+    )
+  )
+
+gpt4_display_table %>% print()
+
+
+gpt4_display_mod <- gpt4_exp %>% # effect with sad being worse than angry, but not significant at alpha = 0.001
+  glm(formula = success ~ display_rule,
+      family = "binomial",
+      data = .)
+
+gpt4_display_mod %>% summary()
+
+
+# check significance of added element to mod - not significant at alpha = 0.001
+drop1(gpt4_display_mod, .~., test = "Chisq")
+
+# Plot
+gpt4_display_plot <- gpt4_exp %>% 
+  ggplot(
+  data =.,
+  aes(
+    x = display_rule, 
+    fill = as.factor(success)
+  )) + 
+  geom_bar() +
+  labs(
+    title = "GPT-4 performance based display rule",
+    fill = "Negotiation Outcome",
+    x = "",
+    y = "Count") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  scale_x_discrete(labels = c("Angry-Happy", "Sad-Happy")) + 
+  theme_minimal()
+
+gpt4_display_plot %>% print()
+
+
+```
+
+## Display x Turn
+We check interaction but probably not meaningful given significance of main effects 
+
+```{r GPT4 display x Turn}
+
+# fit model
+gpt4_displayTurn_mod <- gpt4_exp %>% 
+  glm(formula = success ~ display_rule * Turn,
+      family = "binomial",
+      data = .)
+
+gpt4_displayTurn_mod %>% summary() # check significance of added element to mod - barely significant
+
+
+# check significance of added element to model. Not significant at alpha = 0.001
+drop1(gpt4_displayTurn_mod, .~., test = "Chisq")
+
+# could relevel, but not necessary as not significant at our alpha. 
+
+```
+
+## Display x Expressiveness
+We check interaction but probably not meaningful given significance of main effects
+
+```{r GPT4 Expressive x Display}
+# Table
+gpt4_expDisp_table <- gpt4_exp %>% 
+  group_by(expressive_level, display_rule) %>%
+  summarise(freq = sum(success)) %>%
+  ungroup() %>% 
+  xtabs(data = ., formula = freq ~ (expressive_level + display_rule))
+
+gpt4_expDisp_table %>% print()
+
+# overall effect - can't fit it as we have ceiling performance. Coefficients and standard errors clearly wrong. 
+gpt4_expDis_mod <- gpt4_exp %>%
+  glm(
+  formula = success ~ expressive_level * display_rule,
+  family = "binomial",
+  data = .
+)
+
+gpt4_expDis_mod %>%  summary()
+
+drop1(gpt4_expDis_mod, .~., test = "Chisq") # so while this works the model is not a good model of the data.
+
+```
+## Full model
+
+Note the full model does not tell us anything we don't know when adding each term as main effects, and the interactions does not show robust coefficients.
+
+```{r GPT4 full model}
+# Full model 
+
+gpt4_full_mod <- gpt4_exp %>%
+  glm(formula = success ~ Turn + expressive_level + display_rule,
+  family = "binomial",
+  data = .
+)
+
+gpt4_full_mod %>% summary()
+
+drop1(gpt4_full_mod, .~., test = "Chisq") # doesn't tell us anything we don't know.
+
+
+# Interactions do not work
+gpt4_interactions <- gpt4_exp %>%
+  glm(
+  formula = success ~ Turn * expressive_level * display_rule,
+  family = "binomial",
+  data = .
+) 
+
+gpt4_interactions %>% summary()
+
+# Full plot
+## Label help
+label_help = as_labeller(c(
+  `happy-angry` = "Angry-Happy", `happy-sad` = "Sad-Happy",
+  `5` = "Turn = 5", `10` = "Turn = 10" 
+))
+
+## plot
+full_mod_plot <- ggplot(
+  data = gpt4_exp,
+  aes(
+    x = expressive_level, 
+    fill = as.factor(success)
+  )) + 
+  facet_wrap(~display_rule + Turn) + 
+  geom_bar() +
+  labs(
+    title = "GPT-4 performance based on expressivity, turn, and display rule",
+    fill = "Negotiation Outcome",
+    x = "") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  theme_minimal()
+
+full_mod_plot %>% print()
+
+```
+
+
+# Claude Opus success analayses
+Conduct similar analysis with Claude 3 Opus
+```{r Claude Opus filter}
+C_opus <- data_full %>%
+  filter(Model == "claude-3-opus-20240229")
+
+```
+
+## Expression only
+```{r C_opus expression only}
+C_opus_noExp_mod <- C_opus %>%
+  glm(formula = success ~ face_only,
+      family = "binomial",
+      data = .)
+
+C_opus_noExp_mod %>% summary() # significant worse with no expression
+
+drop1(C_opus_noExp_mod, .~., test = "Chisq") %>% print() # better than null model
+```
+
+## Turn
+```{r Claude Opus Turn}
+C_opus_exp <- C_opus %>%
+  filter(face_only == FALSE) # filer to only cases with verbal
+
+
+## Turn
+C_opus_turn_mod <- C_opus_exp %>% 
+  glm(formula = success ~ Turn,
+      family = "binomial",
+      data = .)
+
+C_opus_turn_mod %>% summary() # significant but not significant at alpha 0.001
+
+drop1(C_opus_turn_mod, .~., test = "Chisq") %>% print() # better than null model but not significant at alpha 0.001
+
+## plot
+C_opus_turn_plot <- C_opus %>% 
+  filter(face_only == FALSE) %>%
+  ggplot(
+  data =.,
+  aes(
+    x = Turn, 
+    fill = as.factor(success)
+  )) + 
+  geom_bar() +
+  labs(
+    title = "Claude OPUS performance based on turn",
+    fill = "Negotiation Outcome",
+    x = "",
+    y = "Count") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  theme_minimal()
+
+C_opus_turn_plot %>% print()
+  
+```
+
+## Interaction between Expression Only and Turn
+
+```{r C_opus Turn x face_only}
+# table
+C_opus_noExpxTurn_table <- C_opus %>%
+  group_by(Turn, face_only) %>%
+  summarise(freq = sum(success)) %>%
+  ungroup() %>% 
+  xtabs(data = ., formula = freq ~face_only + Turn)
+
+C_opus_noExpxTurn_table %>% print()
+
+
+# base model
+C_opus_no_exp_mod <- C_opus %>%
+  glm(formula = success ~ face_only * Turn,
+      family = "binomial",
+      data = .)
+
+C_opus_no_exp_mod %>% summary()
+
+## checking that interaction is a better model is a good estimator for model
+drop1(C_opus_no_exp_mod, .~., test = "Chisq") %>% print() # Turn still not significant at 0.001 and interaction not at all.
+
+## plotting
+C_opus_no_exp_plot <- C_opus %>% 
+  ggplot(
+  data =.,
+  aes(
+    x = face_only, 
+    fill = as.factor(success)
+  )) + 
+  facet_wrap(~Turn) + 
+  geom_bar() +
+  labs(
+    title = "Claude OPUS performance based on access to verbal response by turn",
+    fill = "Negotiation Outcome",
+    x = "",
+    y = "Count") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  scale_x_discrete(labels = c("Expression +\n verbal response", "Expression only")) +
+  theme_minimal()
+
+C_opus_no_exp_plot %>% print()
+
+```
+
+```{r clean up}
+# cleaning up
+
+rm(list = c("C_opus_no_exp_mod", "C_opus_no_exp_plot"))
+
+```
+
+## Expressiveness 
+
+```{r claude opus expressiveness}
+
+# table
+C_opus_expressivity_table <- table(
+    C_opus_exp$expressive_level,
+    factor(
+      C_opus_exp$success,
+      levels = c("0", "1"),
+      labels = c("Offer declined", "Offer accepted")
+      )
+    )
+
+
+C_opus_expressivity_table %>% print()
+
+# Fit model
+C_opus_express_mod <- C_opus_exp %>% # both 0.25 and 1 are worse than 0.05
+  glm(formula = success ~ expressive_level,
+      family = "binomial",
+      data = .)
+
+C_opus_express_mod %>% summary()
+
+# check significance of added element to mod - highly significant
+drop1(C_opus_express_mod, .~., test = "Chisq")
+
+# relevel (no significant difference between 0.25 and 1)
+C_opus_express25_mod <- C_opus_exp %>%
+  mutate(expressive_level = relevel(expressive_level, ref = "0.25")) %>%
+  glm(formula = success ~ expressive_level,
+      family = "binomial",
+      data = .)
+
+C_opus_express25_mod %>% summary()
+
+# Plot
+C_opus_expressive_plot <- C_opus_exp %>% 
+  ggplot(
+  data =.,
+  aes(
+    x = expressive_level, 
+    fill = as.factor(success)
+  )) + 
+  geom_bar() +
+  labs(
+    title = "Claude performance based expressivity level",
+    fill = "Negotiation Outcome",
+    x = "",
+    y = "Count") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  theme_minimal()
+
+C_opus_expressive_plot %>% print()
+
+```
+## Expressive turn interaction
+```{r C_opus Expressive x Turn}
+
+# Table
+C_opus_expTurn_table <- C_opus_exp %>% 
+  group_by(expressive_level, Turn) %>%
+  summarise(freq = sum(success)) %>%
+  ungroup() %>% 
+  xtabs(data = ., formula = freq ~ ( Turn + expressive_level))
+
+C_opus_expTurn_table %>% print()
+
+
+# model 
+C_opus_expTurn_mod <- C_opus_exp %>%
+  glm(
+  formula = success ~ Turn * expressive_level,
+  family = "binomial",
+  data = .
+)
+
+C_opus_expTurn_mod %>%  summary()
+
+# Check significance of interaction term
+drop1(C_opus_expTurn_mod,.~., test = "Chisq") # not significant.
+
+# relevel for completeness
+C_opus_expTurn_mod <- C_opus_exp %>%
+  mutate(
+    Turn = relevel(Turn, ref = "10")
+  ) %>%
+  glm(
+  formula = success ~ Turn * expressive_level,
+  family = "binomial",
+  data = .
+)
+
+C_opus_expTurn_mod %>%  summary()
+
+# Plot
+C_opus_expTurn_plot <- ggplot(
+  data = C_opus_exp,
+  aes(
+    x = expressive_level, 
+    fill = as.factor(success)
+  )) + 
+  facet_wrap(~Turn) + 
+  geom_bar() +
+  labs(
+    title = "Claude OPUS performance based on expressivity and turn",
+    fill = "Negotiation Outcome",
+    x = "Expressivity Level") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  theme_minimal()
+
+C_opus_expTurn_plot %>% print()
+
+```
+
+## Display model
+```{r C_opus display}
+
+# Table
+
+C_opus_display_table <- table(
+  C_opus_exp$display_rule,
+  factor(
+    C_opus_exp$success,
+    levels = c("0", "1"),
+    labels = c("Offer declined", "Offer accepted")
+    )
+  )
+
+C_opus_display_table %>% print()
+
+# fit model
+C_opus_display_mod <- C_opus_exp %>% # not significant 
+  glm(formula = success ~ display_rule,
+      family = "binomial",
+      data = .)
+
+C_opus_display_mod %>% summary()
+
+# check significance of added element to mod - not significant
+drop1(C_opus_display_mod, .~., test = "Chisq")
+
+# plot
+C_opus_display_plot <- C_opus_exp %>% 
+  ggplot(
+  data =.,
+  aes(
+    x = display_rule, 
+    fill = as.factor(success)
+  )) + 
+  geom_bar() +
+  labs(
+    title = "Claude performance based display rule",
+    fill = "Negotiation Outcome",
+    x = "",
+    y = "Count") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  scale_x_discrete(labels = c("Angry-Happy", "Sad-Happy")) + 
+  theme_minimal()
+
+C_opus_display_plot %>% print()
+
+
+```
+## Display model x Turn
+```{r C_opus display x Turn}
+# Table
+C_opus_turnDisp_table <- C_opus_exp %>% 
+  group_by(Turn, display_rule) %>%
+  summarise(freq = sum(success)) %>%
+  ungroup() %>% 
+  xtabs(data = ., formula = freq ~ (Turn + display_rule))
+
+C_opus_turnDisp_table %>% print()
+
+# fit model
+C_opus_display_mod <- C_opus_exp %>%
+  glm(formula = success ~ display_rule * Turn,
+      family = "binomial",
+      data = .)
+
+C_opus_display_mod %>% summary()
+
+# check significance of added element to mod - not significant to add any of these
+drop1(C_opus_display_mod, .~., test = "Chisq")
+
+# Plot
+C_opus_turnDisp_plot <- ggplot(
+  data = C_opus_exp,
+  aes(
+    x = Turn, 
+    fill = as.factor(success)
+  )) + 
+  facet_wrap(~display_rule) + 
+  geom_bar() +
+  labs(
+    title = "Claude OPUS performance based on Turn and display rule",
+    fill = "Negotiation Outcome",
+    x = "Expressivity Level") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  theme_minimal()
+
+C_opus_turnDisp_plot %>% print()
+
+
+```
+
+## Expressiveness and display interaction
+```{r C_opus Expressive x display}
+
+# Table
+C_opus_expTurn_table <- C_opus_exp %>% 
+  group_by(expressive_level, display_rule) %>%
+  summarise(freq = sum(success)) %>%
+  ungroup() %>% 
+  xtabs(data = ., formula = freq ~ (expressive_level + display_rule))
+
+C_opus_expTurn_table %>% print()
+
+## Model fit
+C_opus_expDis_mod <- C_opus_exp %>%
+  glm(
+  formula = success ~ expressive_level * display_rule,
+  family = "binomial",
+  data = .
+)
+
+C_opus_expDis_mod %>% summary()
+
+# check significance of adding to the model - no significant interaction
+drop1(C_opus_expDis_mod,.~., test = "Chisq")
+
+# Plot
+C_opus_expdisplay_rule_plot <- ggplot(
+  data = C_opus_exp,
+  aes(
+    x = expressive_level, 
+    fill = as.factor(success)
+  )) + 
+  facet_wrap(~display_rule) + 
+  geom_bar() +
+  labs(
+    title = "Claude OPUS performance based on expressivity and display rule",
+    fill = "Negotiation Outcome",
+    x = "Expressivity Level") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  theme_minimal()
+
+C_opus_expdisplay_rule_plot %>% print()
+
+```
+## Full model
+
+```{r claude opus full model}
+
+# Full model 
+C_opus_full_mod <- C_opus_exp %>%
+  glm(formula = success ~ Turn + (expressive_level * display_rule),
+  family = "binomial",
+  data = .
+) # note adding interaction only between expressive_level and display as this is the theoretically interesting interaction
+
+
+C_opus_full_mod %>% summary()
+
+# test model significance
+drop1(C_opus_full_mod, .~., test = "Chisq") # only expressive is significant at our alpha
+
+## For completeness -  Get all ref levels of the different models
+levels_turn = c("5", "10")
+levels_expressive = c("0.05", "0.25", "1")
+levels_display = c("happy-angry", "happy-sad")
+
+for (t in levels_turn){
+  for (j in levels_expressive){
+    for (k in levels_display){
+      C_opus_interactions <- C_opus_exp %>%
+        mutate(
+          Turn = relevel(Turn, ref = t),
+          expressive_level = relevel(expressive_level, ref = j),
+          display_rule = relevel(display_rule, ref = k),
+        ) %>%
+        glm(
+            formula = success ~ Turn + expressive_level * display_rule,
+            family = "binomial",
+            data = .)
+        
+        # print levels
+        c(t,j,k) %>% paste() %>% print()
+        # print model
+        
+        C_opus_interactions %>% summary() %>% print()
+    }
+  }
+}
+
+# Full plot
+
+# Label help
+label_help = as_labeller(c(
+  `happy-angry` = "Angry-Happy", `happy-sad` = "Sad-Happy",
+  `5` = "Turn = 5", `10` = "Turn = 10" 
+))
+
+## plot
+full_mod_plot <- ggplot(
+  data = C_opus_exp,
+  aes(
+    x = expressive_level, 
+    fill = as.factor(success)
+  )) + 
+  facet_wrap(~display_rule + Turn) + 
+  geom_bar() +
+  labs(
+    title = "Claude OPUS performance based on expressivity, turn, and display rule",
+    fill = "Negotiation Outcome",
+    x = "") + 
+  scale_fill_viridis_d(labels = c("Offer declined", "Offer accepted")) +
+  theme_minimal()
+
+full_mod_plot %>% print()
+
+
+```
+
+# Outcome table creation
+```{r both model tables}
+
+# Model and expression only
+data_full %>%
+  filter(Model == "claude-3-opus-20240229" | Model == "gpt-4-0125-preview") %>%
+  mutate(Model = droplevels(Model)) %>%
+  group_by(Model, face_only) %>%
+  summarise(freq = sum(success)) %>%
+  xtabs(freq ~ Model + face_only,
+        data = .) %>% print()
+
+# Model and turn
+data_full %>%
+  filter(Model == "claude-3-opus-20240229" | Model == "gpt-4-0125-preview") %>%
+  filter(face_only == FALSE) %>%
+  mutate(Model = droplevels(Model)) %>%
+  group_by(Model, Turn) %>%
+  summarise(freq = sum(success)) %>%
+  xtabs(freq ~ Model + Turn,
+        data = .) %>% print()
+
+# Model, display, and turn
+data_full %>%
+  filter(Model == "claude-3-opus-20240229" | Model == "gpt-4-0125-preview") %>%
+  filter(face_only == FALSE) %>%
+  mutate(Model = droplevels(Model)) %>%
+  group_by(Model, display_rule, Turn) %>%
+  summarise(freq = sum(success))%>%
+  print()
+
+data_full %>%
+  filter(Model == "claude-3-opus-20240229" | Model == "gpt-4-0125-preview") %>%
+  filter(face_only == FALSE) %>%
+  mutate(Model = droplevels(Model)) %>%
+  group_by(Model, expressive_level) %>%
+  summarise(freq = sum(success)) %>%
+  xtabs(freq ~ Model + expressive_level,
+        data = .) %>% print()
+
+# plot
+
+## set up labels for facet_grid 
+label_help = as_labeller(c(
+  `happy-angry` = "Angry-Happy", `happy-sad` = "Sad-Happy",
+  `5` = "Turn = 5", `10` = "Turn = 10", 
+  `claude-3-opus-20240229` = "Claude 3 Opus", `gpt-4-0125-preview` = "GPT-4 Turbo"
+))
+
+## plot
+full_mod_plot <- data_full %>%
+  filter(Model == "claude-3-opus-20240229" | Model == "gpt-4-0125-preview") %>%
+  filter(face_only == FALSE) %>%
+  ggplot(
+    data = .,
+    aes(
+      x = expressive_level, 
+      fill = as.factor(success))
+    ) + 
+  facet_grid(cols = vars(display_rule, Turn), rows = vars(Model), labeller = as_labeller(label_help)) + 
+  geom_bar() +
+  labs(
+    title = "",
+    fill = "Outcome",
+    x = "",
+    y = "Count") + 
+  scale_fill_viridis_d(labels = c("Declined", "Accepted")) +
+  theme_minimal()
+
+full_mod_plot %>% print()
+```
+
+# Predict score difference
+Here we run the analysis to see what affect differences in score on the final offer, given the final offer is accepted.
+
+## Model differences in scores
+``` {r model lm comp}
+
+# Filter data to only look at successful negotiations and verbal + expression conditions
+data_gpt4_claude_opus <- data_full %>%
+  filter(Model == "claude-3-opus-20240229" | Model == "gpt-4-0125-preview") %>%
+  filter(face_only == FALSE) %>%
+  filter(success == 1)
+
+# Fit linear model with only LMM as predictor
+gpt4_claude_lm_simple <- data_gpt4_claude_opus %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ Model)
+
+gpt4_claude_lm_simple %>% summary() # claude opus gets significantly higher scores on average
+
+# Check model fit with F test
+anova(gpt4_claude_lm_simple) # using model is significantly better at explaining data than null model
+
+# Plot
+model_lm <- ggplot(
+  data = data_gpt4_claude_opus,
+  aes(
+    x = Model, 
+    y = final_offer_util_llm,
+    fill = Model
+  )) + 
+  geom_violin() +
+  labs(
+    title = "Model differences",
+    x = "",
+    y = "LLM points after accepted final offer") + 
+  scale_fill_viridis_d() +
+  scale_x_discrete() +
+  ylim(c(0, 400)) + 
+  theme_minimal()
+
+model_lm %>% print()
+
+```
+We know test each model individually
+
+## GPT-4 Turbo score analysis
+```{r GPT4 lm}
+
+# filter to only successful negotiations with verbal + expressions
+gpt_success <- gpt4_exp %>%
+  filter(success == 1)
+
+# Fit simple model
+gpt_turn_lm <- gpt_success %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ Turn) # Turn is significantly difference, more turns is worse than 5
+
+gpt_turn_lm %>% summary()
+
+anova(gpt_turn_lm) # adding turn makes the model significantly better
+
+# Add expressiveness to null model
+gpt_expressiveness_lm <- gpt_success %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ expressive_level) # There are no significant differences
+
+gpt_expressiveness_lm %>% summary()
+
+# relevel 
+gpt_expressiveness_lm <- gpt_success %>% 
+  mutate(expressive_level = relevel(expressive_level, ref = "0.25")) %>%
+  lm(data = ., 
+     formula = final_offer_util_llm ~ expressive_level) # There are no significant differences
+
+gpt_expressiveness_lm %>% summary()
+
+# check if better than null model
+anova(gpt_expressiveness_lm) # adding expressiveness does not improve model
+
+# Add display to null model
+gpt_display_lm <- gpt_success %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ display_rule) # There are no significant differences
+
+gpt_display_lm %>% summary()
+
+# check fit
+anova(gpt_display_lm) # adding expressiveness does not improve model
+
+
+# add interactions for completeness
+gpt_expTurnDisp_lm <- gpt_success %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ expressive_level * Turn * display_rule) # There are no significant differences other than turn
+
+# we'd need to relevel to get all turn effects, however we see below that adding expressiveness with interactions does not improve model fit.
+
+gpt_expTurnDisp_lm %>% summary()
+
+# check if better than null model
+anova(gpt_expTurnDisp_lm) # adding interactions does not improve model
+
+# Plot 
+gpt4_score_lm <- ggplot(
+  data = gpt_success,
+  aes(
+    x = as.factor(display_rule), 
+    y = final_offer_util_llm,
+    fill = as.factor(Turn)
+  )) + 
+  facet_wrap(~as.factor(expressive_level)) + 
+  geom_violin() +
+  labs(
+    title = "GPT-4 score",
+    fill = "Turns",
+    x = "",
+    y = "LLM points after accepted final offer") + 
+  scale_fill_viridis_d(labels = c("5 turns", "10 turns")) +
+  ylim(c(0, 400)) + 
+  theme_minimal()
+
+gpt4_score_lm %>% print()
+
+```
+
+```{r Claude opus lm}
+# filter to only successful negotiations with verbal + expressions
+c_opus_success <- C_opus_exp %>%
+  filter(success == 1)
+
+# Fit simple model with turn
+c_opus_turn_lm <- c_opus_success %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ Turn)
+
+c_opus_turn_lm %>% summary() # Turn is significantly difference, more turns are better than 5
+
+anova(c_opus_turn_lm) # adding turn makes the model significantly better
+
+# Add expressiveness to null model
+c_opus_exp_lm <- c_opus_success %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ expressive_level)
+
+c_opus_exp_lm %>% summary() # there are differences but not significant at alpha 0.001
+
+
+# relevel 
+c_opus_exp_lm <- c_opus_success %>% 
+  mutate(expressive_level = relevel(expressive_level, ref = "0.25")) %>%
+  lm(data = ., 
+     formula = final_offer_util_llm ~ expressive_level)
+
+c_opus_exp_lm %>% summary()
+
+# check if better than null model
+anova(c_opus_exp_lm) # adding expressiveness improves the model
+
+# Add display to null model
+c_opus_display_lm <- c_opus_success %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ display_rule) # There are no significant differences
+
+c_opus_display_lm %>% summary()
+
+# check fit
+anova(c_opus_display_lm) # adding expressiveness does not improve model
+
+
+# add Turn and Expressiveness interactions as these looks like they improve the model
+c_opus_expTurn_lm <- c_opus_success %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ Turn * expressive_level)
+
+# we'd need to relevel to get all turn effects, however we see below that adding expressiveness with interactions does not improve model fit.
+
+c_opus_expTurn_lm %>% summary()
+
+# check if better than null model
+anova(c_opus_expTurn_lm) # adding expressiveness and turn, but not their interaction makes the model better
+# note the expressiveness in the paper is reported from this test.
+
+# we report from simple models for simplicity and due to scarceness of data in some groups models will be more robust when fitted on larger number of data points.
+
+
+# add final interaction for completeness
+c_opus_expTurnDisp_lm <- c_opus_success %>% 
+  lm(data = ., 
+     formula = final_offer_util_llm ~ Turn * expressive_level * display_rule) # There are no significant differences other than turn
+
+# we'd need to relevel to get all turn effects, however we see below that adding expressiveness with interactions does not improve model fit.
+
+c_opus_expTurnDisp_lm %>% summary()
+
+# check if better than null model
+anova(c_opus_expTurnDisp_lm) # still no need to include display and expressivenesss is touch and go based on this and simple models. We include it in the model, however see that the simple effects are not significant at 0.001 themselves. 
+
+# plotting
+c_opus_score_lm <- ggplot(
+  data = c_opus_success,
+  aes(
+    x = as.factor(display_rule), 
+    y = final_offer_util_llm,
+    fill = as.factor(Turn)
+  )) + 
+  facet_wrap(~as.factor(expressive_level)) + 
+  geom_violin() +
+  labs(
+    title = "Claude Opus score",
+    fill = "Turns",
+    x = "",
+    y = "LLM points after accepted final offer") + 
+  scale_fill_viridis_d(labels = c("5 turns", "10 turns")) +
+  ylim(c(0, 400)) + 
+  theme_minimal()
+
+c_opus_score_lm %>% print()
+```
+
+## Plot both llm data
+
+``` {r Plot both models}
+
+# label help for facet_grid
+label_help = as_labeller(c(
+  `0.05` = "0.05", `0.25` = "0.25",
+  `1` = "1",
+  `claude-3-opus-20240229` = "Claude 3 Opus", `gpt-4-0125-preview` = "GPT-4 Turbo"
+))
+
+# Plot
+score_full_plot <- ggplot(
+  data = data_gpt4_claude_opus,
+  aes(
+    x = as.factor(display_rule), 
+    y = final_offer_util_llm,
+    fill = as.factor(Turn)
+  )) + 
+  facet_grid(cols = vars(expressive_level), rows = vars(Model), labeller = as_labeller(label_help)) +
+  geom_violin() +
+  labs(
+    title = "",
+    fill = "Turns",
+    x = "",
+    y = "LLM points after accepted final offer") + 
+  scale_fill_viridis_d(labels = c("5 turns", "10 turns")) +
+  scale_x_discrete(labels = c("Angry-Happy", "Sad-Happy")) +
+  ylim(c(0, 400)) + 
+  theme_minimal()
+
+score_full_plot %>% print()
+
+```
